@@ -4,3 +4,5 @@ const func = ()=>{
     console.log("INDEX")
     x();
 }
+
+func();
