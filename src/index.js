@@ -1,8 +1,8 @@
-import x from "./main"
+import React from "react"
+import ReactDOMClient from 'react-dom/client'
+import TestJsx from "./test.jsx";
 
-const func = ()=>{
-    console.log("INDEX")
-    x();
-}
+const container = document.getElementById("root");
+const root = ReactDOMClient.createRoot(container);
 
-func();
+root.render(<TestJsx/>);

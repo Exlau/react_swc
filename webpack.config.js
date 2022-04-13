@@ -1,4 +1,5 @@
 const path = require("path")
+const HtmlWebpackPlugin = require("html-webpack-plugin")
 
 module.exports = {
     entry: path.resolve(__dirname,"src") + "/index.js",
@@ -10,7 +11,7 @@ module.exports = {
     module:{
         rules:[
             {
-                test: /\.m?js$/,
+                test: /\.m?(js|jsx)$/,
                 exclude: /(node_modules)/,
                 use: {
                   loader: "swc-loader",
@@ -18,7 +19,18 @@ module.exports = {
                     parseMap: true
                   }
                 }
+            },
+            {
+                test: /\.css$/,
+                exclude: /(node_modules)/,
+                loader:["style-loader","css-loader"]
             }
         ]
-    }   
+    },
+    plugins:[
+        new HtmlWebpackPlugin({
+            filename:"index.html",
+            template:"public/index.html"
+        })
+    ]   
 }
